@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lux ☕</title>
+  <style>
+    /* Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #0d0d0d;
+      color: #d2b48c;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #a67c52;
+      position: sticky;
+      top: 0;
+      background: #0d0d0d;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a, .lang-selector span {
+      color: #d2b48c;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .lang-selector {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-left: 1rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #b38b6d;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .category {
+      margin: 0 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #d2b48c;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .category:hover {
+      color: #a67c52;
+    }
+
+    .category-desc {
+      font-size: 1rem;
+      color: #b38b6d;
+      margin-top: 0.3rem;
+    }
+
+    .sections {
+      display: none;
+      justify-content: center;
+      margin: 2rem 1rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      border: 1px solid #a67c52;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 280px;
+      background: #1a1a1a;
+      transition: transform 0.3s;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 10px #a67c52;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-bottom: 1px solid #a67c52;
+      padding-bottom: 0.5rem;
+    }
+
+    .item {
+      margin-bottom: 1.5rem;
+      padding: 0.8rem;
+      border: 1px solid #a67c52;
+      border-radius: 8px;
+      background: #262626;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .item p {
+      margin: 0.3rem 0 0;
+      font-size: 0.9rem;
+      color: #c9a580;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid #a67c52;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #b38b6d;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        gap: 1rem;
+      }
+
+      .sections {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .categories {
+        flex-direction: column;
+      }
+    }
+
+    /* Small accents */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #a67c52;
+      margin: 1rem auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Lux ☕</div>
+    <nav>
+      <a href="#home" id="homeLink">Home</a>
+      <a href="#about" id="aboutLink">About</a>
+      <a href="#contact" id="contactLink">Contact</a>
+      <div class="lang-selector">
+        <span onclick="setLanguage('en')">🇬🇧 EN</span> | 
+        <span onclick="setLanguage('gr')">🇬🇷 GR</span>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Lux ☕</h1>
+    <div class="divider"></div>
+    <p id="heroText">Choose your indulgence below</p>
+  </section>
+
+  <section class="categories">
+    <div class="category" onclick="showCategory('coffee')">
+      Coffee
+      <div class="category-desc" id="coffeeDesc">Rich and aromatic blends to warm your soul.</div>
+    </div>
+    <div class="category" onclick="showCategory('drink')">
+      Drinks
+      <div class="category-desc" id="drinkDesc">Refreshing beverages to complement your taste.</div>
+    </div>
+    <div class="category" onclick="showCategory('food')">
+      Food
+      <div class="category-desc" id="foodDesc">Freshly baked goods and savory delights.</div>
+    </div>
+  </section>
+
+  <section class="sections" id="coffee">
+    <div class="section">
+      <h2>Coffee</h2>
+      <div class="item">
+        <h3 id="coffee1">Espresso</h3>
+        <p id="coffee1desc">Rich and intense flavor - €2.50</p>
+      </div>
+      <div class="item">
+        <h3 id="coffee2">Cappuccino</h3>
+        <p id="coffee2desc">Smooth blend with creamy milk - €3.50</p>
+      </div>
+      <div class="item">
+        <h3 id="coffee3">Latte</h3>
+        <p id="coffee3desc">Velvety and lightly sweet - €3.80</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sections" id="drink">
+    <div class="section">
+      <h2>Drinks</h2>
+      <div class="item">
+        <h3 id="drink1">Fresh Orange Juice</h3>
+        <p id="drink1desc">Cold-pressed perfection - €4.00</p>
+      </div>
+      <div class="item">
+        <h3 id="drink2">Iced Tea</h3>
+        <p id="drink2desc">Refreshing and aromatic - €3.00</p>
+      </div>
+      <div class="item">
+        <h3 id="drink3">Smoothie</h3>
+        <p id="drink3desc">Burst of fresh fruits - €4.50</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sections" id="food">
+    <div class="section">
+      <h2>Food</h2>
+      <div class="item">
+        <h3 id="food1">Croissant</h3>
+        <p id="food1desc">Buttery and flaky pastry - €2.80</p>
+      </div>
+      <div class="item">
+        <h3 id="food2">Sandwich</h3>
+        <p id="food2desc">Freshly made gourmet - €5.50</p>
+      </div>
+      <div class="item">
+        <h3 id="food3">Muffin</h3>
+        <p id="food3desc">Moist and delightful - €3.00</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="hero">
+    <h1>About Us</h1>
+    <div class="divider"></div>
+    <p id="aboutText">At Lux ☕, we craft every drink and dish with passion, using only the finest ingredients.</p>
+  </section>
+
+  <section id="contact" class="hero">
+    <h1>Contact</h1>
+    <div class="divider"></div>
+    <p id="contactText">Find us at Thessaloniki Center | Call: +30 210 1234567</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Lux ☕ | All rights reserved
+  </footer>
+
+  <script>
+    const translations = {
+      gr: {
+        heroText: "Διάλεξε την απόλαυσή σου",
+        coffee1: "Εσπρέσο",
+        coffee1desc: "Πλούσια και έντονη γεύση - €2.50",
+        coffee2: "Καπουτσίνο",
+        coffee2desc: "Ομαλό χαρμάνι με κρεμώδες γάλα - €3.50",
+        coffee3: "Λάτε",
+        coffee3desc: "Βελούδινο και ελαφρώς γλυκό - €3.80",
+        drink1: "Φρέσκος Χυμός Πορτοκάλι",
+        drink1desc: "Πίεση κρύου για τέλεια γεύση - €4.00",
+        drink2: "Παγωμένο Τσάι",
+        drink2desc: "Δροσιστικό και αρωματικό - €3.00",
+        drink3: "Σμούθι",
+        drink3desc: "Έκρηξη φρέσκων φρούτων - €4.50",
+        food1: "Κρουασάν",
+        food1desc: "Βουτυρένιο και τραγανό - €2.80",
+        food2: "Σάντουιτς",
+        food2desc: "Φρέσκο γκουρμέ - €5.50",
+        food3: "Μάφιν",
+        food3desc: "Ζουμερό και απολαυστικό - €3.00",
+        aboutText: "Στο Lux ☕ δημιουργούμε κάθε ρόφημα και πιάτο με πάθος, χρησιμοποιώντας μόνο τα καλύτερα υλικά.",
+        contactText: "Θα μας βρείτε στο Κέντρο Θεσσαλονίκης | Τηλ: +30 210 1234567",
+        homeLink: "Αρχική",
+        aboutLink: "Σχετικά",
+        contactLink: "Επικοινωνία",
+        coffeeDesc: "Πλούσια και αρωματική ποικιλία.",
+        drinkDesc: "Δροσιστικά ποτά για κάθε γούστο.",
+        foodDesc: "Φρέσκα προϊόντα και νόστιμα σνακ."
+      },
+      en: {
+        heroText: "Choose your indulgence below",
+        coffee1: "Espresso",
+        coffee1desc: "Rich and intense flavor - €2.50",
+        coffee2: "Cappuccino",
+        coffee2desc: "Smooth blend with creamy milk - €3.50",
+        coffee3: "Latte",
+        coffee3desc: "Velvety and lightly sweet - €3.80",
+        drink1: "Fresh Orange Juice",
+        drink1desc: "Cold-pressed perfection - €4.00",
+        drink2: "Iced Tea",
+        drink2desc: "Refreshing and aromatic - €3.00",
+        drink3: "Smoothie",
+        drink3desc: "Burst of fresh fruits - €4.50",
+        food1: "Croissant",
+        food1desc: "Buttery and flaky pastry - €2.80",
+        food2: "Sandwich",
+        food2desc: "Freshly made gourmet - €5.50",
+        food3: "Muffin",
+        food3desc: "Moist and delightful - €3.00",
+        aboutText: "At Lux ☕, we craft every drink and dish with passion, using only the finest ingredients.",
+        contactText: "Find us at Thessaloniki Center | Call: +30 210 1234567",
+        homeLink: "Home",
+        aboutLink: "About",
+        contactLink: "Contact",
+        coffeeDesc: "Rich and aromatic blends to warm your soul.",
+        drinkDesc: "Refreshing beverages to complement your taste.",
+        foodDesc: "Freshly baked goods and savory delights."
+      }
+    };
+
+    function showCategory(category) {
+      document.querySelectorAll('.sections').forEach(section => section.style.display = 'none');
+      document.getElementById(category).style.display = 'flex';
+    }
+
+    function setLanguage(lang) {
+      Object.keys(translations[lang]).forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.innerText = translations[lang][id];
+      });
+      showCategory('coffee');  // Default to coffee category
+    }
+
+    setLanguage('en'); // Default language
+  </script>
+</body>
+</html>
